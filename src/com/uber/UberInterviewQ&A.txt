@@ -1,0 +1,509 @@
+1. Find whether 2 strings are anagrams :
+Fried --- fired
+Gainly – laying
+Sadder – dreads
+public class AnagramStrings {
+static boolean findAnagram(String s1,String s2) {
+if(s1.length()!=s2.length()) return false;
+int[] count=new int[256];
+for(int i=0;i<s1.length();i++) {
+count[s1.charAt(i)]++;
+count[s2.charAt(i)]--;
+}
+for(int i=0;i<count.length-1;i++) {
+if(count[i]!=0) return false;
+}
+return true;
+}
+public static void main(String[] args) {
+// TODO Auto-generated method stub
+System.out.println(findAnagram("surya","suray"));
+}
+}
+2. Suppose there are 2 strings source =”abcde” target =”ab” . Your program should return true if target is there in source. And also if the reverse of target is there in source
+public class StringAvailable {
+public static void main(String[] args) {
+// TODO Auto-generated method stub
+String input = "abcde";
+System.out.println(input.contains("ed"));
+boolean result = input.indexOf("cd")!=-1?true:false;
+System.out.println(result);
+}
+}
+3. An array has numbers from 1 to 20 . some of the numbers are missing if we sort the numbers in ascending order. Find out the missing numbers.
+public class ArrayMissingNumber {
+static int missingNumber(int a[]) {
+int length = a.length;
+int sum=(a[length-1]*(a[length-1]+1))/2;
+for(int i=0;i<length;i++) {
+sum -=a[i];
+}
+return sum;
+}
+public static void main(String[] args) {
+// TODO Auto-generated method stub
+int[] arr = {1,2,3,5};
+System.out.println(missingNumber(arr));
+}
+}
+4. Find the first non-repeating character in a string eg: helloworld h is the answer.
+public class NonRepeatCharacter {
+static char firstNonRepeat(String s) {
+int[] arr = new int[26];
+for(int i=0;i<s.length();i++) {
+arr[s.charAt(i)-'a']++;
+}
+for(int i=0;i<s.length();i++) {
+if(arr[s.charAt(i)-'a']==1) return s.charAt(i);
+}
+return '-';
+}
+public static void main(String[] args) {
+// TODO Auto-generated method stub
+String s = "suryakumar";
+System.out.println(firstNonRepeat(s));
+}
+}
+5. Find the palindromic permutations for a given string eg: Malayalam https://www.geeksforgeeks.org/print-palindromic-permutations-given-string-alphabetic-order/
+6. find out the given string is palindrome.
+public class PolyndramTest {
+public static boolean test(String s) {
+//Solution 1
+StringBuffer sb = new StringBuffer(s);
+System.out.println(sb.reverse());
+if(s.equals(sb.toString())) { System.out.println("true"); }
+//Solution 2
+int i=0, l=s.length()-1;
+while(i<l) {
+if(s.charAt(i)!=s.charAt(l)) {
+return false;
+}
+i++; l--;
+}
+return true;
+}
+//Solution 3
+public static boolean stringReverse(String s) {
+String s1="";
+for(int i =s.length()-1;i>=0;i--) {
+s1+=s.charAt(i);
+}
+//System.out.println(s1);
+return s.equals(s1);
+}
+public static void main(String[] args) {
+// TODO Auto-generated method stub
+boolean b = test("surya");
+System.out.println(b);
+boolean b1 = stringReverse("ssssss");
+System.out.println(b1);
+}
+}
+7. Find out all palindromic substrings from a give string eg: aabbaacabcadadad
+public class PalindromeSubString {
+public static void expand(String s,int low,int high,Set<String> set) {
+while(low>=0 && high < s.length() && s.charAt(low)==s.charAt(high)) {
+set.add(s.substring(low, high+1));
+//System.out.println(s.substring(low, high+1));
+low--;
+high++;
+}
+}
+public static void findAllSubstringPalindrom(String s) {
+int length = s.length();
+if(s==null || length<1) System.out.println("String is empty");
+if(length<2)System.out.println(s);
+Set<String> set = new HashSet<String>();
+for(int i=0;i<length;i++) {
+//find all odd length palindrome with str[i] as mid point
+expand(s,i,i,set);
+//find all length palindrome with str[i] and str[i+1]
+expand(s,i,i+1,set);
+}
+System.out.println(set);
+}
+public static void main(String[] args) {
+// TODO Auto-generated method stub
+String str = "google";
+findAllSubstringPalindrom(str);
+}
+8. Find out longest palindromic substrings from a give string eg: google, result : goog
+public class PalindromeLongestSubString {
+static int resultstart;
+static int resultlength;
+public static void expand(String s,int low,int high,Set<String> set) {
+while(low>=0 && high < s.length() && s.charAt(low)==s.charAt(high)) {
+set.add(s.substring(low, high+1));
+//System.out.println(s.substring(low, high+1));
+low--;
+high++;
+}
+if(resultlength<high-low-1) {
+resultstart = low+1;
+resultlength = high-low-1;
+}
+}
+public static void findAllSubstringPalindrom(String s) {
+int length = s.length();
+if(s==null || length<1) System.out.println("String is empty");
+if(length<2)System.out.println(s);
+Set<String> set = new HashSet<String>();
+for(int i=0;i<length;i++) {
+//find all odd length palindrome with str[i] as mid point
+expand(s,i,i,set);
+//find all length palindrome with str[i] and str[i+1]
+expand(s,i,i+1,set);
+}
+System.out.println(set);
+System.out.println(s.substring(resultstart,resultstart+resultlength));
+}
+public static void main(String[] args) {
+// TODO Auto-generated method stub
+String str = "google";
+findAllSubstringPalindrom(str);
+}
+}
+9.Find out the missing number in the array
+public class ArrayMissingNumber {
+static int missingNumber(int a[]) {
+int length = a.length;
+int sum=(a[length-1]*(a[length-1]+1))/2;
+for(int i=0;i<length;i++) {
+sum -=a[i];
+}
+return sum;
+}
+public static void main(String[] args) {
+// TODO Auto-generated method stub
+int[] arr = {1,2,3,5};
+System.out.println(missingNumber(arr));
+}
+}
+10.Find out the Nth largest number in array
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+public class ArrayNthLargest {
+//Solution 1
+static void nthLargest(int[] arr) {
+int temp;
+for(int i=0;i<arr.length;i++) {
+for(int j=i+1;j<arr.length;j++) {
+if(arr[i]>arr[j]) {
+temp = arr[i];
+arr[i] = arr[j];
+arr[j] = temp;
+}
+}
+}
+System.out.println(arr[arr.length-3]);
+//Solution 2 :By using sorting
+Arrays.sort(arr);
+System.out.println(arr[arr.length-3]);
+//Solution 3 :By using collections
+List<Integer> l = Arrays.stream(arr).sorted().boxed().collect(Collectors.toList());
+System.out.println(l.get(l.size()-3));
+}
+public static void main(String[] args) {
+// TODO Auto-generated method stub
+int a[] = {9,2,1,7,8,3};
+nthLargest(a);
+}
+}
+11.Find out the element in array by using binary search
+import java.util.Arrays;
+public class BinarySearch {
+static int binarySearch(int arr[],int ele) {
+int left=0, right=arr.length-1;
+while(left<=right) {
+int mid = left+(right)/2;
+if(arr[mid]==ele) return mid;
+//if ele is greater, ignore left half
+if(arr[mid]<ele) left=mid+1;
+//if ele is smaller, ignoring right half
+if(arr[mid]>ele) right=mid-1;
+}
+return -1;
+}
+public static void main(String[] args) {
+// TODO Auto-generated method stub
+int[] arr = {16,8,2,10,11,14};
+Arrays.sort(arr);
+int index = binarySearch(arr,16);
+System.out.println("element index : "+index);
+}
+}
+12. Find out the charecter count of given string
+import java.util.LinkedHashMap;
+public class CharactersCount {
+//Solution 1
+static void getOccuringChar(String s) {
+int[] count = new int[256];
+for(int i=0;i<s.length();i++) {
+count[s.charAt(i)]++;
+}
+char[] ca = new char[s.length()];
+for(int i=0;i<s.length();i++) {
+ca[i] = s.charAt(i);
+int find = 0;
+for(int j=0;j<=i;j++) {
+if(s.charAt(i)==ca[j]) {
+find++;
+}
+}
+if(find == 1)
+System.out.println("Occurence of char : "+s.charAt(i)+" in the string is : "+count[s.charAt(i)]);
+}
+}
+static int hashFunc(char c) {
+return (c-'a');
+}
+//Solution 2: by using hashing technique
+static void countCharByUsingHash(String s) {
+int[] freq = new int[26];
+for(int i=0;i<s.length();i++) {
+//int index = hashFunc(s.charAt(i));
+int index = s.charAt(i)-'a';
+freq[index]++;
+}
+for(int i=0;i<26;i++) {
+if(freq[i]>0)
+System.out.println("String character : "+(char)(i+'a')+" : count is :"+freq[i]);
+}
+}
+//Solution 3 :by using collections
+static void getOccuringChar1(String s) {
+LinkedHashMap<Character,Integer> charMap = new LinkedHashMap<Character, Integer>();
+for(char c:s.toCharArray()) {
+if(charMap.containsKey(c)) {
+charMap.put(c, charMap.get(c)+1);
+}else {
+charMap.put(c, 1);
+}
+}
+charMap.forEach((k,v)->System.out.println(k+":"+v));
+}
+public static void main(String[] args) {
+// TODO Auto-generated method stub
+//getOccuringChar("suryakumar");
+//getOccuringChar1("suryakumar");
+countCharByUsingHash("suryakumar");
+}
+}
+13. Find out the first duplicate element in the array/ given string.
+import java.util.HashSet;
+import java.util.Set;
+public class FirstDuplicate {
+//Solution for integer array
+static int firstDuplicateInt(int[] a) {
+Set<Integer> set = new HashSet<Integer>();
+for(int i:a) {
+if(set.contains(i)){
+return i;
+}
+set.add(i);
+}
+return -1;
+}
+//Solution for the first duplicate character in the given string
+static char firstDuplicateChar(String s) {
+Set<Character> set = new HashSet<Character>();
+for(int i=0;i<s.length();i++) {
+if(set.contains(s.charAt(i))){
+return s.charAt(i);
+}
+set.add(s.charAt(i));
+}
+return '-';
+}
+public static void main(String[] args) {
+// TODO Auto-generated method stub
+int[] arr ={1,2,3,4,1};
+System.out.println(firstDuplicateInt(arr));
+String s = "suryakumar";
+System.out.println(firstDuplicateChar(s));
+}
+}
+14. Sorting the array incresing order eg: 0,2,0,1,2,0,1,1,0,0 Result : 0,0,0,0,1,1,1,2,2
+public class SortedIncreasingOrder {
+static void sort012IncreaseOrder(int[] arr) {
+int cnt0=0,cnt1=0,cnt2=0;
+for(int i=0;i<arr.length;i++) {
+switch(arr[i]) {
+case 0:
+cnt0++;
+break;
+case 1:
+cnt1++;
+break;
+case 2:
+cnt2++;
+break;
+}
+}
+int i=0;
+while(cnt0>0) {
+arr[i++] =0;
+cnt0--;
+}
+while(cnt1>0) {
+arr[i++] =1;
+cnt1--;
+}
+while(cnt2>0) {
+arr[i++] =2;
+cnt2--;
+}
+System.out.println(arr);
+}
+public static void main(String[] args) {
+// TODO Auto-generated method stub
+int[] arr = {1,0,2,1,1,0,2,0,2,0};
+sort012IncreaseOrder(arr);
+}
+}
+15. Implement Stack class
+public class Stack {
+int arr[];
+int capacity;
+int top;
+Stack(int size){
+arr = new int[size];
+capacity = size;
+top=-1;
+}
+//inserting the elements into stack
+public void push(int ele) {
+if(isFull()) {
+System.out.println("--stack is full so increasing capacity--");
+int[] new_arr = new int[capacity*2];
+for(int i=0;i<capacity;i++) {
+new_arr[i] = arr[i];
+}
+capacity=capacity*2;
+arr = new_arr;
+}
+arr[++top] = ele;
+System.out.println("element added: "+ele);
+}
+//retrieve and remove the elements
+public int pop() {
+if(isEmpty()) {
+System.out.println("--stack is empty--");
+}
+System.out.println("remove element : "+arr[top]);
+return arr[top--];
+}
+//retrieve element without remove
+public int peak() {
+System.out.println("Just peak the element : "+arr[top]);
+return arr[top];
+}
+//check the stack is empty
+public boolean isEmpty() {
+return (top==-1);
+}
+//check the stack is full
+public boolean isFull() {
+return (top == capacity-1);
+}
+public static void main(String[] args) {
+// TODO Auto-generated method stub
+Stack stack = new Stack(3);
+stack.push(1);stack.push(2);stack.push(3);stack.push(4);stack.push(5);stack.push(6);
+stack.pop();stack.peak();
+}
+}
+16. Implement the Queue class
+public class Queue {
+int[] arr;
+int capacity;
+int front;
+int last;
+int count;
+Queue(int size){
+arr = new int[size];
+capacity = size;
+front =0;
+last=-1;
+count = 0;
+}
+//inserting an elements into Queue
+public void enqueue(int ele){
+if(isFull()) {
+System.out.println("Queue is full");
+System.exit(0);
+}
+last=(last+1)%capacity;
+System.out.println("Inserting an element : "+ele+" at index : "+last);
+arr[last] = ele;
+count++;
+}
+//Removing an element from Queue
+public void dequeue() {
+if(isEmpty()) {
+System.out.println("Queue is empty");
+}
+System.out.println("Removing an element : "+arr[front]+" at index : "+front);
+front = (front+1)%capacity
+count--;
+
+}
+//Returning the element without remove
+public int peak() {
+if(isEmpty()) {
+System.out.println("Queue is empty");
+}
+System.out.println("Peak the element : "+arr[front]);
+return arr[front];
+}
+//Size of the Queue
+public int size() {
+return count;
+}
+public boolean isFull() {
+return (capacity == size());
+}
+public boolean isEmpty(){
+return (size()==0);
+}
+public static void main(String[] args) {
+// TODO Auto-generated method stub
+Queue qu = new Queue(2);
+qu.enqueue(1);
+qu.enqueue(2);
+System.out.println("Size : "+qu.size());
+qu.peak();qu.peak();
+qu.dequeue();qu.dequeue();
+System.out.println("Size : "+qu.size());
+}
+}
+17. Problem Statement:
+Line1 is a dictionary of words. Convert Line 2 to a meaningful sentence by referring to the words in Line1.
+Example1:
+// String line1 = "I,A,AM,HE,HERE";
+// String line2 = "IAMHERE";
+Solution :I AM HERE
+Example2:
+//String line1 = "he,hello,the,there";
+//String line2 = "hellothere";
+Solution: hello there
+public class WordBreak {
+public static void wordBreak(String dict, String str,String out)
+{
+if (str.length() == 0) { System.out.println(out); }
+for(int i=1;i<=str.length();i++) {
+String prefix = str.substring(0, i);
+if(dict.contains(prefix)) {
+wordBreak(dict, str.substring(i),out+" "+prefix);
+}
+}
+}
+public static void main(String[] args) {
+// TODO Auto-generated method stub
+String s1 = "I,A,AM,HE,HERE";
+String s2 = "IAMHERE";
+wordBreak(s1, s2,"");
+}
+}
+
