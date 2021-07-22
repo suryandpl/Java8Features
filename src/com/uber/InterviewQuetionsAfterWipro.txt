@@ -1,0 +1,95 @@
+SIEMENS:(Esha Gupta)
+1.Write program for Binary search algorithm
+2.Write program for linkedlist reverse.
+3.Many to many relations in JPA
+4.2nd highest salary.
+
+Galaxy:
+1.FUTURE interface in java 8
+2.what is compatible in java 8
+3.what is parallel stream and in which scenarios we should not use it
+4.how do you handling asynchronous communication in your code
+5.what is i/o blocking in java
+6.how to publish one EC2 instance to public from private vpc
+7. 
+
+
+
+1.map vs flatmap on streams
+2.what is future object
+3.how do you achieve deep cloning
+4.how many types of classloaders in java
+
+
+Elastic Search:
+1.tokenarisator
+2.How do we create indices in elastic search
+3.cyclic dependency
+4.how the perfomance is different than normal DB even SQL db's also have indexes?
+
+
+
+gRPC frame work read:
+https://medium.com/@sankar.p/how-grpc-convinced-me-to-chose-it-over-rest-30408bf42794
+
+Nth largest/smallest SQL:
+
+select * from Employee ORDER BY salary DESC limit 3,1
+
+
+1.how to make a class immutable
+2.Design a java class to make sure only one object of that class and only one object of each child class can be created, if we try to create 2nd object of the class itself or 2nd object of any child class, it should throw exception
+
+A question on run time polymorphism
+
+how to sort a List<Emp> based on id,name,salary using comparable and comparator inferfaces.
+
+How to create your own thread executor service .
+
+experience in RestFul APIs, Spring boot, Spring data and Spring microservices
+
+Java collections, data structures and SQL concepts
+
+basic sorting techniques using comparable or comparator interface.Basics of Collections.sort -> comparator comparable on multiple fields
+
+Polymorphism -> dynamic method distpatch/static -> solve questions form indiabix or other websites
+
+JVM internals -> in dpeth
+
+Solve leetcode -> multithreading/concurrency questions Implement your own concurrent hash map, hash map, tree map, executor framework
+
+String internals
+
+JDBC
+
+SQL queries -> practice all department employee queries -> watch kudvenkat SQL interview questions.
+
+Balaji
+
+ 1. Basics of Collections.sort -> comparator comparable on multiple fields
+
+2. Polymorphism -> dynamic method distpatch/static -> solve questions form indiabix or other websites
+
+3. JVM internals -> in dpeth
+
+4. Solve leetcode -> multithreading/concurrency questions
+
+5. Implement your own concurrent hash map, hash map, tree map, executor framework
+
+6. String internals
+
+7. JDBC
+
+ 8. SQL queries -> practice all department employee queries -> watch kudvenkat SQL interview questions
+
+Sort Emp with id, name, salary
+
+Make class immutable.
+
+Runtime polymorphism based questions.
+
+Sort Emp with id, name, salary
+
+Make class immutable
+
+Runtime polymorphism based questions 
